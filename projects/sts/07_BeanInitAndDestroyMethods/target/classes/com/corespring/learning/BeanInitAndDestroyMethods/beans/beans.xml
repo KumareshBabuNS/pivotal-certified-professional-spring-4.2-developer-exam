@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd"
+	default-destroy-method="destroy" default-init-method="init">
+
+
+	<bean id="patient"
+		class="com.corespring.learning.BeanInitAndDestroyMethods.Patient"
+		autowire="byType" autowire-candidate="default" lazy-init="false"
+		scope="singleton" init-method="onCreate" destroy-method="onDestroy">
+		<constructor-arg value="1" name="id"></constructor-arg>
+		<constructor-arg value="Shekhar" name="name"></constructor-arg>
+		<property name="nationalId" value="1234"></property>
+		<property name="address" ref="address"></property>
+	</bean>
+	<bean id="address" class="com.corespring.learning.BeanInitAndDestroyMethods.Address"
+		autowire-candidate="default">
+		<constructor-arg name="street" value="11/3 BB Ghosh Lane"></constructor-arg>
+		<constructor-arg name="postCode" value="7000"></constructor-arg>
+	</bean>
+</beans>
